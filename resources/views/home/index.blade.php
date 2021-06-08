@@ -19,9 +19,10 @@
 							<img src="#" width="100%" height="100%">
 						</td>
 						<td align="right"> 
-							<a href="home">Home</a> |
-							<a href="#">Login</a> |
-							<a href="#">Registration</a> 
+							<a href="/home">Home</a> |
+							<a href="/login">Login</a> |
+							<a href="#">Registration</a> |
+							<a href="/logout">Logout</a> 
 						</td>
 					</tr>
 				</table>
@@ -32,7 +33,8 @@
 	<table border="1px" align="center" width="100%">
 		<tr>
 			<td colspan="2" align="center" width="100%" height="425px">
-				<h1>Welcome to Login Page</h1>
+				<h1>Welcome to , {{$name}} : {{$id}}</h1>
+				<a href="user/list">Userlist</a>
 			</td>
 		</tr>
 		<tr height="50px">

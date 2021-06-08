@@ -13,14 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function () {
+
+    return view('Welcome');
+});
+
 Route::get('/home', function () {
     //echo "Welcome Ruhul Amin";
 
     return view('home');
 });
 
-Route::get('/login', function () {
-    //echo "Welcome Ruhul Amin";
+Route::get('/login', ['uses'=>'LoginController@index']);
+Route::post('/login', ['uses'=>'LoginController@verify']);
 
-    return view('/login');
-});
+Route::get('/home', ['uses'=>'HomeController@index']);
+Route::get('/logout', ['uses'=>'LogoutController@index']);
+
+Route::get('/user/list', ['uses'=>'UserController@index']);
+
+Route::get('/user/insert/{id}', ['uses'=>'UserController@insert']);
