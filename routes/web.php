@@ -32,4 +32,5 @@ Route::get('/logout', ['uses'=>'LogoutController@index']);
 
 Route::get('/user/list', ['uses'=>'UserController@index']);
 
-Route::get('/user/insert/{id}', ['uses'=>'UserController@insert']);
+Route::get('/user/details/{id}', ['uses'=>'UserController@details']);
+//Route::get('/user/details/{id}',[UserController::class,'details']);

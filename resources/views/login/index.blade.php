@@ -23,8 +23,7 @@
 						<td align="right"> 
 							<a href="/home">Home</a> |
 							<a href="/login">Login</a> |
-							<a href="#">Registration</a> |
-							<a href="/logout">Logout</a> 
+							<a href="#">Registration</a>
 						</td>
 					</tr>
 				</table>
