@@ -6,26 +6,79 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    protected $user;
-
-    public function __construct()
-    {
-        $this->user  = [
-            ['id'=>1, 'name'=>'Ruhul','email'=>'email@email.com'],
-            ['id'=>2, 'name'=>'abc', 'email'=>'abc@email.com'],
-            ['id'=>3, 'name'=>'xyz', 'email'=>'xyz@email.com']
-    ];
-    }
     public function index(){
-
-        $users= $this->user;
-
+        $users = $this->getUserList();
         return view('user.list')->with('userlist', $users);
     }
 
     public function details($id){
-        $data= $this->user;
-        return view('user.details')->with('id', $id)
-                                   ->with('userlist', $data);
+        $users = $this->getUserList();
+        $user = '';
+        foreach($users as $u){
+            if($u['id'] == $id){
+                $user = $u;
+                break;
+            }
+        }
+        return view('user.details')->with('user', $user);
+    }
+
+    public function create(){
+        return view('user.create');
+    }
+
+    public function insert(Request $req){
+        $users = $this->getUserList();
+        $user = ['id'=>$req->id, 'name'=>$req->uname, 'email'=>$req->email];
+        array_push($users, $user);
+        return view('user.list')->with('userlist', $users);
+    }
+
+    public function edit($id){
+        //find user by id from user list $user
+
+        $users=$this->getUserList();
+        $user = '';
+        foreach($users as $u){
+            if($u['id'] == $id){
+                $user = $u;
+                break;
+            }
+        }
+
+        return view('user.edit')->with('user', $user);
+    }
+
+    public function update(Request $req, $id){
+        //craete new user array & add to list
+        //new userList
+
+        $users = $this->getUserList();
+        $user = ['id'=>$req->id, 'name'=>$req->uname, 'email'=>$req->email];
+
+        return view('user.list')->with('userlist', $user);
+    }
+
+    public function delete($id){
+        //confirm window
+        //find user by id $user
+
+        return view('user.delete')->with('user', $id);
+    }
+
+    public function destroy($id){
+        //remove user form list
+        //create new list & display
+
+        return view('user.list')->with('userlist', $users);
+    }
+
+
+    public function getUserList(){
+        return [
+            ['id'=>1, 'name'=>'Ruhul', 'email'=>'email@email.com'],
+            ['id'=>2, 'name'=>'abc', 'email'=>'abc@email.com'],
+            ['id'=>3, 'name'=>'xyz', 'email'=>'xyz@email.com']
+        ];
     }
 }

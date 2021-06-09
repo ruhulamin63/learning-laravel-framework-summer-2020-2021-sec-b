@@ -7,6 +7,10 @@
     <title>User details</title>
 </head>
 <body>
+
+    <a href="/user/list"> Back</a> |
+	<a href="/login"> Logout </a> 
+
     <table border="1" align="center">
     <tr>
             <th colspan="4">User List</th>
@@ -17,9 +21,6 @@
             <th>EMAIL</th>
             <th>Action</th>
         </tr>
-
-        @foreach($userlist as $user)
-         @if($user['id'] == $id)
         <tr>
             <td>{{$user['id']}}</td>
             <td>{{$user['name']}}</td>
@@ -27,12 +28,10 @@
       
             <td>
                 <a href="/user/details/{{$user['id']}}">Details</a> | 
-                <a href="/user/update/{{$user['id']}}">Update</a> | 
+                <a href="/user/edit/{{$user['id']}}">Update</a> | 
                 <a href="/user/delete/{{$user['id']}}">Delete</a> 
             </td>
         </tr>
-        @endif
-       @endforeach
     </table>
     
 </body>

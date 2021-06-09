@@ -7,7 +7,9 @@
     <title>User List Page</title>
 </head>
 <body>
-
+    <a href="/home"> Back</a> |
+	<a href="/logout"> Logout </a> 
+    
     <table border="1" align="center">
         <tr>
             <th colspan="4">User List</th>
@@ -27,7 +29,7 @@
 
             <td>
                 <a href="/user/details/{{$user['id']}}">Details</a> | 
-                <a href="/user/update/{{$user['id']}}">Update</a> | 
+                <a href="/user/edit/{{$user['id']}}">Edit</a> | 
                 <a href="/user/delete/{{$user['id']}}">Delete</a> 
             </td>
         </tr>

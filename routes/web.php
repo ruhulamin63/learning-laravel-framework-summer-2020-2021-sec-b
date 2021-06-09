@@ -32,5 +32,13 @@ Route::get('/logout', ['uses'=>'LogoutController@index']);
 
 Route::get('/user/list', ['uses'=>'UserController@index']);
 
-Route::get('/user/details/{id}', ['uses'=>'UserController@details']);
-//Route::get('/user/details/{id}',[UserController::class,'details']);
+Route::get('/user/create', 'UserController@create');
+Route::post('/user/create', 'UserController@insert');
+
+Route::get('/user/details/{id}', 'UserController@details');
+
+Route::get('/user/edit/{id}', 'UserController@edit');
+Route::post('/user/edit/{id}', 'UserController@update');
+
+Route::get('/user/delete/{id}', 'UserController@delete');
+Route::post('/user/delete/{id}', 'UserController@destroy');
