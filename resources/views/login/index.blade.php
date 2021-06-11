@@ -52,7 +52,7 @@
 										<tr>
 											<td>Username</td>
 											<td>
-												<input type="text" name="username" id="username" placeholder="@username" value="">
+												<input type="text" name="uname" id="uname" placeholder="@username" value="">
 											</td>
 										</tr>
 										<tr>

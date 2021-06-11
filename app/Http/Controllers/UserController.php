@@ -35,18 +35,18 @@ class UserController extends Controller
     }
 
     public function edit($id){
-        //find user by id from user list $user
+        //find user by id from userlist $user
 
         $users=$this->getUserList();
-        $user = '';
-        foreach($users as $u){
-            if($u['id'] == $id){
-                $user = $u;
-                break;
-            }
-        }
+        // $user = '';
+        // foreach($users as $u){
+        //     if($u['id'] == $id){
+        //         $user = $u;
+        //         break;
+        //     }
+        // }
 
-        return view('user.edit')->with('user', $user);
+        return view('user.edit')->with('user', $users);
     }
 
     public function update(Request $req, $id){
