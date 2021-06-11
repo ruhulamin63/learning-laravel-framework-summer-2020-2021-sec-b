@@ -31,6 +31,7 @@ class UserController extends Controller
         $users = $this->getUserList();
         $user = ['id'=>$req->id, 'name'=>$req->uname, 'email'=>$req->email];
         array_push($users, $user);
+
         return view('user.list')->with('userlist', $users);
     }
 
@@ -38,15 +39,15 @@ class UserController extends Controller
         //find user by id from userlist $user
 
         $users=$this->getUserList();
-        // $user = '';
-        // foreach($users as $u){
-        //     if($u['id'] == $id){
-        //         $user = $u;
-        //         break;
-        //     }
-        // }
 
-        return view('user.edit')->with('user', $users);
+        $user = '';
+        foreach($users as $u){
+            if($u['id'] == $id){
+                $user = $u;
+                break;
+            }
+        }
+        return view('user.edit')->with('user', $user);
     }
 
     public function update(Request $req, $id){
@@ -54,9 +55,17 @@ class UserController extends Controller
         //new userList
 
         $users = $this->getUserList();
-        $user = ['id'=>$req->id, 'name'=>$req->uname, 'email'=>$req->email];
 
-        return view('user.list')->with('userlist', $user);
+        for($i=0; $i<sizeof($users); $i++){
+            if($users[$i]['id'] == $id){
+
+                $users[$i]['id'] = $req->id;
+                $users[$i]['name'] = $req->uname;
+                $users[$i]['email'] = $req->email;
+                break;
+            }
+        } 
+        return view('user.list')->with('userlist', $users);
     }
 
     public function delete($id){
