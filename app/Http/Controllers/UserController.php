@@ -71,15 +71,30 @@ class UserController extends Controller
     public function delete($id){
         //confirm window
         //find user by id $user
-
-        return view('user.delete')->with('user', $id);
+        $users = $this->getUserList();
+        
+        $user = '';
+        foreach($users as $u){
+            if($u['id'] == $id){
+                $user = $u;
+                break;
+            }
+        }
+        return view('user.list')->with('user', $user);
     }
 
     public function destroy($id){
         //remove user form list
         //create new list & display
-
-        return view('user.list')->with('userlist', $users);
+             
+        $users = $this->getUserList();
+        $new_users = [];
+        foreach($users as $u){
+            if($u['id'] != $id){
+                array_push($new_users,$u);
+            }
+        }
+        return view('user.delete')->with('userlist', $new_users);
     }
 
 
