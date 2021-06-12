@@ -24,13 +24,14 @@ Route::get('/home', function () {
     return view('home');
 });
 
+Route::get('/home', 'HomeController@index');
+
 Route::get('/login', ['uses'=>'LoginController@index']);
-Route::post('/login', ['uses'=>'LoginController@verify']);
+Route::post('/login', 'LoginController@verify');
 
-Route::get('/home', ['uses'=>'HomeController@index']);
-Route::get('/logout', ['uses'=>'LogoutController@index']);
+Route::get('/logout', 'LogoutController@index');
 
-Route::get('/user/list', ['uses'=>'UserController@index']);
+Route::get('/user/list', 'UserController@index');
 
 Route::get('/user/create', 'UserController@create');
 Route::post('/user/create', 'UserController@insert');

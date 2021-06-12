@@ -10,6 +10,7 @@ class UserController extends Controller
         $users = $this->getUserList();
         return view('user.list')->with('userlist', $users);
     }
+// ============================ End index ====================================
 
     public function details($id){
         $users = $this->getUserList();
@@ -22,18 +23,22 @@ class UserController extends Controller
         }
         return view('user.details')->with('user', $user);
     }
+// ============================ End Details ====================================
 
     public function create(){
         return view('user.create');
     }
+// ============================ End Create ====================================
 
     public function insert(Request $req){
         $users = $this->getUserList();
+
         $user = ['id'=>$req->id, 'name'=>$req->uname, 'email'=>$req->email];
         array_push($users, $user);
 
         return view('user.list')->with('userlist', $users);
     }
+// ============================ End Insert ====================================
 
     public function edit($id){
         //find user by id from userlist $user
@@ -49,6 +54,7 @@ class UserController extends Controller
         }
         return view('user.edit')->with('user', $user);
     }
+// ============================ End Edit ====================================
 
     public function update(Request $req, $id){
         //craete new user array & add to list
@@ -67,6 +73,7 @@ class UserController extends Controller
         } 
         return view('user.list')->with('userlist', $users);
     }
+// ============================ End Update ====================================
 
     public function delete($id){
         //confirm window
@@ -80,8 +87,9 @@ class UserController extends Controller
                 break;
             }
         }
-        return view('user.list')->with('user', $user);
+        return view('user.delete')->with('user', $user);
     }
+// ============================ End Delete ====================================
 
     public function destroy($id){
         //remove user form list
@@ -94,9 +102,9 @@ class UserController extends Controller
                 array_push($new_users,$u);
             }
         }
-        return view('user.delete')->with('userlist', $new_users);
+        return view('user.list')->with('userlist', $new_users);
     }
-
+// ============================ End Destroy ====================================
 
     public function getUserList(){
         return [
@@ -106,3 +114,4 @@ class UserController extends Controller
         ];
     }
 }
+// ============================ End getUserList ==================================

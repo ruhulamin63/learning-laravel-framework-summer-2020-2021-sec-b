@@ -14,6 +14,10 @@
    <form method="post">
 		
         <table border="1">
+			<tr>
+			    <td>Id</td>
+			    <td>{{$user['id']}}</td>
+		    </tr>
 		    <tr>
 			    <td>Username</td>
 			    <td>{{$user['name']}}</td>
