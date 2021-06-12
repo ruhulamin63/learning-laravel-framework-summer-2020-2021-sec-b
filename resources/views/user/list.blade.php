@@ -21,19 +21,21 @@
             <th>Action</th>
         </tr>
 
-    @foreach($userlist as $user)
-        <tr>
-            <td>{{$user['id']}}</td>
-            <td>{{$user['name']}}</td>
-            <td>{{$user['email']}}</td>
+        @foreach($userlist as $user)
+            <tr>
+                <td>{{$user['id']}}</td>
+                <td>{{$user['name']}}</td>
+                <td>{{$user['email']}}</td>
 
-            <td>
-                <a href="/user/details/{{$user['id']}}">Details</a> | 
-                <a href="/user/edit/{{$user['id']}}">Edit</a> | 
-                <a href="/user/delete/{{$user['id']}}">Delete</a> 
-            </td>
-        </tr>
-    @endforeach
+                <td>
+                    <a href="/user/details/{{$user['id']}}">Details</a> | 
+                    <a href="/user/edit/{{$user['id']}}">Edit</a> | 
+                    <a href="/user/delete/{{$user['id']}}">Delete</a> 
+                </td>
+            </tr>
+        @endforeach
     </table>
-</body>
+
+    
+</body> 
 </html>

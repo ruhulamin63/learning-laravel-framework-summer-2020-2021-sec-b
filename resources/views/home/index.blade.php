@@ -32,7 +32,7 @@
 	<table border="1px" align="center" width="100%">
 		<t>
 			<td colspan="2" align="center" width="100%" height="425px">
-				<h1>Welcome to , {{$name}} : {{$id}}</h1>
+				<h1>Welcome to , {{session('uname')}} : {{$id}}</h1>
 				<a href="/user/create"> Create New </a> |
         		<a href="/user/list"> User List </a> |
         		<a href="/logout"> Logout </a> 

@@ -28,6 +28,7 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/login', ['uses'=>'LoginController@index']);
 Route::post('/login', 'LoginController@verify');
+//Route::get('/login/test', 'UserController@test');
 
 Route::get('/logout', 'LogoutController@index');
 

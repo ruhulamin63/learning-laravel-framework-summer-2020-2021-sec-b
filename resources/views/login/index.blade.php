@@ -37,7 +37,7 @@
 				<table>
 					<tr>
 						<td>
-							<form method="post" action="">
+							<form method="post">
 								<fieldset>
 									<legend>LOGIN</legend>
 									<table>
@@ -45,7 +45,7 @@
 											<td colspan="2" align="center" width="150px" height="50px">
 												<img src="#">
 												<hr>
-												<!-- <h2 id="txtHint"></h2> -->
+												<h2>{{session('msg')}}</h2>
 											</td>
 										</tr>
 
@@ -55,21 +55,11 @@
 												<input type="text" name="uname" id="uname" placeholder="@username" value="">
 											</td>
 										</tr>
-										<tr>
-											<td colspan="2">
-												<span id="user" class="user-error"></span>
-											</td>
-										</tr>
 
 										<tr>
 											<td>Password</td>
 											<td>
 												<input type="password" name="password" id="password"placeholder="password" value="">
-											</td>
-										</tr>
-										<tr>
-											<td colspan="2">
-												<span id="pass" class="user-error"></span>
 											</td>
 										</tr>
 

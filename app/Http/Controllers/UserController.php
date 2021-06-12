@@ -113,5 +113,33 @@ class UserController extends Controller
             ['id'=>3, 'name'=>'xyz', 'email'=>'xyz@email.com']
         ];
     }
-}
+//}
 // ============================ End getUserList ==================================
+
+    // public function test(){
+    //     session()->put('uname','Ruhul Amin');
+    //     session()->put('password','123');
+        
+    //     $uname = session()->get('uname');
+    //     $password = session()->get('password');
+    //     $alldata = session()->all();
+
+    //     session()->forget('uname');
+    //     session()->flush();
+    //     $uname = session()->has('uname');
+    //     $uname = session()->pull($alldata);
+
+    //     session()->flash('cgpa','4');
+    //     session()->flash('dept','cse');
+
+    //     $cgpa = session()->get('cgpa');
+
+    //     $uname = session()->keep('cgpa');
+    //     session()->reflash();
+
+    //     return view('login.test')->with('data', $uname);
+    // }
+// =====================================================================================================
+
+
+}
