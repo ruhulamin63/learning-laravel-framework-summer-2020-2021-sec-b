@@ -4,18 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
     public function index(){
 
-        $users = User::all();
+        // $users = User::all();
+        $users = DB::table('users')->get(); //Query Builder
+
         return view('user.list')->with('userlist', $users);
     }
 // ============================ End index ====================================
 
     public function details($id){
-        $user = User::find($id);
+
+        $user = User::find($id); // Model Query
+
         return view('user.details')->with('user', $user);
     }
 // ============================ End Details ====================================
@@ -63,45 +68,21 @@ class UserController extends Controller
 // ============================ End Update ====================================
 
     public function delete($id){
-        //confirm window
-        //find user by id $user
-        $users = $this->getUserList();
+  
+        $users = User::find($id);
         
-        $user = '';
-        foreach($users as $u){
-            if($u['id'] == $id){
-                $user = $u;
-                break;
-            }
-        }
-        return view('user.delete')->with('user', $user);
+        return view('user.delete')->with('user', $users);
     }
 // ============================ End Delete ====================================
 
     public function destroy($id){
-        //remove user form list
-        //create new list & display
-             
-        $users = $this->getUserList();
-        $new_users = [];
-        foreach($users as $u){
-            if($u['id'] != $id){
-                array_push($new_users,$u);
-            }
-        }
-        return view('user.list')->with('userlist', $new_users);
+
+        $users = User::find($id);
+        $users->delete();
+
+         return redirect()->route('user.delete');
     }
 // ============================ End Destroy ====================================
-
-    public function getUserList(){
-        return [
-            ['id'=>1, 'name'=>'Ruhul', 'email'=>'email@email.com'],
-            ['id'=>2, 'name'=>'abc', 'email'=>'abc@email.com'],
-            ['id'=>3, 'name'=>'xyz', 'email'=>'xyz@email.com']
-        ];
-    }
-//}
-// ============================ End getUserList ==================================
 
     // public function test(){
     //     session()->put('uname','Ruhul Amin');

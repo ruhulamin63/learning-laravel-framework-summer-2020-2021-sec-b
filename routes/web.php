@@ -44,6 +44,6 @@ Route::group(['middleware'=>['sess']] , function(){
         Route::get('/user/edit/{id}', 'UserController@edit');
         Route::post('/user/edit/{id}', 'UserController@update');
         Route::get('/user/delete/{id}', 'UserController@delete');
-        Route::post('/user/delete/{id}', 'UserController@destroy');
+        Route::post('/user/delete/{id}', 'UserController@destroy')->name('user.delete');
     });
 });
