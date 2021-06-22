@@ -3,24 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {
     public function index(){
-        $users = $this->getUserList();
+
+        $users = User::all();
         return view('user.list')->with('userlist', $users);
     }
 // ============================ End index ====================================
 
     public function details($id){
-        $users = $this->getUserList();
-        $user = '';
-        foreach($users as $u){
-            if($u['id'] == $id){
-                $user = $u;
-                break;
-            }
-        }
+        $user = User::find($id);
         return view('user.details')->with('user', $user);
     }
 // ============================ End Details ====================================
@@ -31,47 +26,39 @@ class UserController extends Controller
 // ============================ End Create ====================================
 
     public function insert(Request $req){
-        $users = $this->getUserList();
+        $users = new User;
+        
+        $users->username = $req->uname;
+        $users->name = $req->name;
+        $users->password = $req->password;
+        $users->email = $req->email;
+        $users->type = $req->type;
+        $users->save();
 
-        $user = ['id'=>$req->id, 'name'=>$req->uname, 'email'=>$req->email];
-        array_push($users, $user);
-
-        return view('user.list')->with('userlist', $users);
+        return redirect()->route('user.index');
     }
 // ============================ End Insert ====================================
 
     public function edit($id){
-        //find user by id from userlist $user
 
-        $users=$this->getUserList();
-
-        $user = '';
-        foreach($users as $u){
-            if($u['id'] == $id){
-                $user = $u;
-                break;
-            }
-        }
-        return view('user.edit')->with('user', $user);
+        $users= User::find($id);
+        return view('user.edit')->with('user', $users);
     }
 // ============================ End Edit ====================================
 
     public function update(Request $req, $id){
-        //craete new user array & add to list
-        //new userList
+        $users = User::find($id);
+        
+        $users->username = $req->uname;
+        $users->name = $req->name;
+        // if($users->password != $req->password){
+        //     $users->password = $req->password;
+        // }
+        $users->email = $req->email;
+        $users->type = $req->type;
+        $users->save();
 
-        $users = $this->getUserList();
-
-        for($i=0; $i<sizeof($users); $i++){
-            if($users[$i]['id'] == $id){
-
-                $users[$i]['id'] = $req->id;
-                $users[$i]['name'] = $req->uname;
-                $users[$i]['email'] = $req->email;
-                break;
-            }
-        } 
-        return view('user.list')->with('userlist', $users);
+        return redirect()->route('user.index');
     }
 // ============================ End Update ====================================
 

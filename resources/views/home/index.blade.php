@@ -19,9 +19,7 @@
 							<img src="#" width="100%" height="100%">
 						</td>
 						<td align="right"> 
-							<a href="/home">Home</a> |
-							<a href="/login">Login</a> |
-							<a href="#">Registration</a>
+							Loged in <a href="/home">{{session('uname')}}</a>
 						</td>
 					</tr>
 				</table>

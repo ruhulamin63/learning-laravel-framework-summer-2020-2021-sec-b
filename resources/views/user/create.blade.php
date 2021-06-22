@@ -11,10 +11,15 @@
 	<h2>Create New User</h2>
 
 	<form method="post">
+	@csrf
 	<table>
 		<tr>
 			<td>Username</td>
 			<td><input type="text" name="uname"></td>
+		</tr>
+		<tr>
+			<td>Name</td>
+			<td><input type="text" name="name"></td>
 		</tr>
 		<tr>
 			<td>Password</td>

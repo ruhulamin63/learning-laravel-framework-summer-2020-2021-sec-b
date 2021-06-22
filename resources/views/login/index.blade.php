@@ -12,6 +12,9 @@
 	</style>
 </head>
 <body>
+	<!-- @csrf -->
+	<!-- <input type="hidden" name="_token" value="{{csrf_token()}}"> -->
+	
 	<table border="1px" align="center" width="100%">
 		<tr>	
 			<td>
@@ -38,6 +41,8 @@
 					<tr>
 						<td>
 							<form method="post">
+
+							{{csrf_field()}}
 								<fieldset>
 									<legend>LOGIN</legend>
 									<table>
@@ -45,21 +50,25 @@
 											<td colspan="2" align="center" width="150px" height="50px">
 												<img src="#">
 												<hr>
-												<h2>{{session('msg')}}</h2>
+												<!-- <h2>{{session('msg')}}</h2><br> -->
+
+												@foreach($errors->all() as $err)
+													{{$err}}<hr>
+												@endforeach
 											</td>
 										</tr>
 
 										<tr>
 											<td>Username</td>
 											<td>
-												<input type="text" name="uname" id="uname" placeholder="@username" value="">
+												<input type="text" name="uname" id="uname" placeholder="@username" value="{{old('uname')}}">
 											</td>
 										</tr>
 
 										<tr>
 											<td>Password</td>
 											<td>
-												<input type="password" name="password" id="password"placeholder="password" value="">
+												<input type="password" name="password" id="password"placeholder="password" value="{{old('password')}}">
 											</td>
 										</tr>
 
