@@ -19,7 +19,7 @@ class SessionVerify
         if($request->session()->has('uname')){
             return $next($request);
         }else{
-            $request->session()->flash('msg', 'Invalid request');
+            // $request->session()->flash('msg', 'Invalid request');
             return redirect('/login');
         }
     }

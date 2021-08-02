@@ -12,7 +12,7 @@
 	<a href="/login"> Logout </a> 
 
     <table border="1" align="center">
-    <tr>
+        <tr>
             <th colspan="6">User List</th>
         </tr>
         <tr>
